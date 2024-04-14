@@ -21,8 +21,7 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-## streamlit framework
-
+# streamlit framework
 st.title("Chatbot with 2 models")
 input_text = st.text_input("Search the topic u want")
 model_options = ["LLama", "GPT"]
