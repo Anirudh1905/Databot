@@ -29,7 +29,7 @@ async def databot_endpoint(question: str, model: str, file: UploadFile):
         content = await file.read()
         tmp.write(content)
         file_path = tmp.name
-    
+
     # load data from pdf
     loader = PyPDFLoader(file_path)
     docs = loader.load()
@@ -64,7 +64,7 @@ async def databot_endpoint(question: str, model: str, file: UploadFile):
     # create retriever chain
     retriever = db.as_retriever()
     retrieval_chain = create_retrieval_chain(retriever, document_chain)
-    
+
     # run the chain and retrieve the results from the context uploaded by the user
     response = retrieval_chain.invoke({"input": question})
 
@@ -72,7 +72,8 @@ async def databot_endpoint(question: str, model: str, file: UploadFile):
 
 
 if __name__ == "__main__":
-    import uvicorn 
+    import uvicorn
     from app import app
+
     # logging.INFO("Starting Server")
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
