@@ -1,5 +1,5 @@
-# LLM
+# Databot
 
-LLM related projects
+This project enables users to obtain answers to their questions from a document. Users must upload a PDF file and select a model. Subsequently, they can ask questions related to the content of the PDF and receive answers.
 
-1. **Chatbot:** A Simple chatbot applications which uses 2 models `llama2` and `gpt-3.5-turbo` and the user can choose which model to use to get replies from chatbot.
+![databot](image/README/frontend.png)
