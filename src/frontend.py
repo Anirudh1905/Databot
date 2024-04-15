@@ -13,6 +13,6 @@ st.write("Model selected:", selected_model)
 if question and uploaded_file:
     data = {"question": question, "model": selected_model}
     response = requests.post(
-        "http://databot-service:80/", params=data, files={"file": uploaded_file}
+        "http://localhost:8000/", params=data, files={"file": uploaded_file}
     )
     st.write(response.json()["answer"])
