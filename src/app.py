@@ -1,4 +1,3 @@
-from io import BytesIO
 from tempfile import NamedTemporaryFile
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import PyPDFLoader
@@ -9,7 +8,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain_community.vectorstores import Chroma
 from langchain_community.llms import Ollama
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, UploadFile
 import os
 from dotenv import load_dotenv
 
@@ -71,9 +70,9 @@ async def databot_endpoint(question: str, model: str, file: UploadFile):
     return response
 
 
-if __name__ == "__main__":
-    import uvicorn
-    from app import app
+# if __name__ == "__main__":
+#     import uvicorn
+#     from app import app
 
-    # logging.INFO("Starting Server")
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+#     # logging.INFO("Starting Server")
+#     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

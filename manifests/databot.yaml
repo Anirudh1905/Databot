@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: databot
+spec:
+  selector:
+    matchLabels:
+      app: databot
+  template:
+    metadata:
+      labels:
+        app: databot
+    spec:
+      containers:
+      - name: databot
+        image: server:latest
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: databot-service
+spec:
+  selector:
+    app: databot
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
