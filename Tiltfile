@@ -9,5 +9,4 @@ k8s_yaml("manifests/ollama.yaml")
 k8s_yaml("manifests/streamlit.yaml")
 
 k8s_resource("databot", port_forwards=["8000:8000"])
-k8s_resource("ollama", port_forwards=["11434:80"])
 k8s_resource("streamlit", port_forwards=["8501:8501"])
