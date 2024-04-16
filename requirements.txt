@@ -13,3 +13,12 @@ chromadb
 faiss-cpu
 black
 python-multipart
+groq
+cassio
+beautifulsoup4
+langchain-groq
+wikipedia
+arxiv
+langchain
+langchainhub
+langchain-text-splitters
