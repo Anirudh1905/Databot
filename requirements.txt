@@ -22,3 +22,4 @@ arxiv
 langchain
 langchainhub
 langchain-text-splitters
+sentence-transformers

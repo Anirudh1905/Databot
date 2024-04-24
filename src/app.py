@@ -1,4 +1,5 @@
 from tempfile import NamedTemporaryFile
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -14,6 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 # Langsmith tracking
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
@@ -53,7 +55,9 @@ async def databot_endpoint(question: str, model: str, file: UploadFile):
 
     # select model based on input from user
     if model == "Llama":
-        llm = Ollama(model="llama2")
+        llm_olama = Ollama(model="llama2")
+        # for faster inference on open source models know more: https://wow.groq.com/why-groq/
+        llm = ChatGroq(groq_api_key=os.environ['GROQ_API_KEY'], model_name="llama2-70b-4096")
     else:
         llm = ChatOpenAI(model="gpt-3.5-turbo")
 
@@ -74,5 +78,4 @@ if __name__ == "__main__":
     import uvicorn
     from app import app
 
-    # logging.INFO("Starting Server")
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
