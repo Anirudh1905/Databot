@@ -55,9 +55,9 @@ async def databot_endpoint(question: str, model: str, file: UploadFile):
 
     # select model based on input from user
     if model == "Llama":
-        llm_olama = Ollama(model="llama2")
+        # llm = Ollama(model="llama2")
         # for faster inference on open source models know more: https://wow.groq.com/why-groq/
-        llm = ChatGroq(groq_api_key=os.environ['GROQ_API_KEY'], model_name="llama2-70b-4096")
+        llm = ChatGroq(groq_api_key=os.environ['GROQ_API_KEY'], model_name="llama3-70b-8192")
     else:
         llm = ChatOpenAI(model="gpt-3.5-turbo")
 
